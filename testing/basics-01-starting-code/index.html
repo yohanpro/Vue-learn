@@ -19,7 +19,9 @@
     <section id="user-goal">
       <h2>My Course Goal</h2>
       <p>{{myTest}}</p>
+      <p v-if="seen">나를 한번 봐주세요</p>
       <p>제 블로그 주소는 <a v-bind:href="myLink">여기</a>입니다</p>
+      <button v-on:click="changeSeen">나를 클릭하면 seen이 바뀌어요!</button>
     </section>
   </body>
 </html>
