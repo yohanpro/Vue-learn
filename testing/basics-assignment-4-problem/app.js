@@ -17,6 +17,7 @@ Vue.createApp({
       this.inputClass = event.target.value;
     },
     inputText2(event) {
+      console.log(object);
       this.styleObject.color = event.target.value;
     },
   },
