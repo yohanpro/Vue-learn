@@ -15,21 +15,37 @@ const app = Vue.createApp({
       this.message = this.$refs.userText.value
     },
   },
+
+  beforeCreate() {
+    console.log('beforeCreate()')
+  },
+  created() {
+    console.log('created()')
+  },
+  beforeMount() {
+    console.log('beforeMount()')
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  beforeUpdate() {
+    console.log('mounted')
+  },
+  updated() {
+    console.log('updated')
+  },
+  beforeUnmount() {
+    console.log('beforeUnmount')
+  },
+  unmounted() {
+    console.log('unmonunted')
+  }
 });
 
 app.mount('#app');
 
 
-const data = {
-  name:'Yohan'
-}
 
-const handler = {
-  set(target, key, value) {
-    console.log('target ', target)
-    console.log('key ', key)
-    console.log('value ', value)
-  }
-}
-
-new Proxy(data)
+setTimeout(() => {
+  app.unmount()
+},3000)
