@@ -3,6 +3,7 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <new-friend @friend-add="addFriend" />
     <ul>
       <friend-contact
         v-for="friend in friends"
@@ -11,6 +12,8 @@
         :name="friend.name"
         :phone="friend.phone"
         :email="friend.email"
+        :is-favorite="friend.isfavorite"
+        @favoriteToggle="toggleFavorite"
       />
     </ul>
   </section>
@@ -18,6 +21,9 @@
 
 <script>
 export default {
+  // components: {
+  //   NewFriend: () => import('./components/NewFriend')
+  // },
   data() {
     return {
       friends: [
@@ -26,22 +32,41 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
+          isFavorite: true
         },
         {
           id: "julie",
           name: "Julie Jones",
           phone: "0987 654421 21",
           email: "julie@localhost.com",
+          isFavorite: false
         },
         {
           id: "John",
           name: "존 스미스",
           phone: "1010101010",
           email: "johnkim.travelfaln.",
+          isFavorite: true
         },
       ],
     };
   },
+  methods: {
+    toggleFavorite(id) {
+      const identifiedFriend = this.friends.find(friend => friend.id === id)
+      identifiedFriend.isFavorite = !identifiedFriend.isFavorite
+    },
+    addFriend({ name, email, phone }) {
+      console.log('안녕하세ㅛㅇㅇ')
+      this.friends.push({
+        id: name,
+        name,
+        phone,
+        email,
+        isFavorite: false
+      })
+    }
+  }
 };
 </script>
 
@@ -71,7 +96,8 @@ header {
   padding: 0;
   list-style: none;
 }
-#app li {
+#app li,
+#app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
