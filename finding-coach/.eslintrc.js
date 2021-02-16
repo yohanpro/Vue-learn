@@ -13,15 +13,5 @@ module.exports = {
     'vue/no-v-html': 'off',
     'comma-dangle': ['error', 'always-multiline'],
     'quote-props': ['error', 'consistent'],
-    'vue/max-attributes-per-line': [
-      'error',
-      {
-        singleline: 1,
-        multiline: {
-          max: 1,
-          allowFirstLine: false,
-        },
-      },
-    ],
   },
 }
